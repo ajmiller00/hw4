@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Joe's Hot Dog Stand</title>
+</head>
+
+<style type="text/css">
+	body {
+		background-image:url('background.jpg');
+		background-repeat:no-repeat;
+		background-attachment:fixed;
+		background-size:cover;
+	}
+
+	html {
+		font-family: Optima, sans-serif;
+	}
+	
+	div, header {
+		text-align: center;
+		background-color:rgba(225,225,225,0.5);
+		color:#000;
+		max-width: 50%;
+		box-sizing: border-box;
+		padding:25px;
+		margin-left:25%;
+		margin-right:25%;
+		margin-bottom: 20px;
+	}
+</style>
+
+
+<body>
+	<header> 
+		<h1 align="center"> Joe's Hot Dog Stand </h1>
+		<h2 align="center" style="font-weight: lighter;"> Order Here </h2>
+	</header>
+
+	<div>
+		<script language="javascript">
+			function getName(item, n) 
+			{
+				if (n==1) 
+					name = item.name;
+				else name = item.namePlural;
+				return name;
+			}
+
+			function getCost(item, n)
+			{
+				return n*item.price;
+			}
+
+			function HotDog(name, namep, price)
+			{
+				this.name= name;
+				this.namePlural = namep;
+				this.price = price;
+			}
+
+			function FrenchFry(name, namep, price)
+			{
+				this.name= name;
+				this.namePlural = namep;
+				this.price = price;
+			}
+
+			function Soda(name, namep, price)
+			{
+				this.name= name;
+				this.namePlural = namep;
+				this.price = price;
+			}
+
+			i1 = new HotDog("hot dog","hot dogs", 3.75);
+			i2 = new FrenchFry("french fry","french fries", 2.00);
+			i3 = new Soda("soda","sodas", 1.50);
+			n1 = prompt("How many " + i1.namePlural + " do you want?", "");
+			n2 = prompt("How many " + i2.namePlural + " do you want?", "");
+			n3 = prompt("How many " + i3.namePlural + " do you want?", "");
+			cost1 = getCost(i1, n1).toFixed(2);
+			cost2 = getCost(i2, n2).toFixed(2);
+			cost3 = getCost(i3, n3).toFixed(2);
+			document.write("The cost for " + n1 + " " + getName(i1, n1) + " is $" + cost1 + "<br>");
+			document.write("The cost for " + n2 + " " + getName(i2, n2) + " is $" + cost2 + "<br>");
+			document.write("The cost for " + n3 + " " + getName(i3, n3) + " is $" + cost3 + "<br>");
+
+			subtotal = parseFloat(cost1) + parseFloat(cost2) + parseFloat(cost3);
+			document.write("<br>" + "Subtotal: $" + subtotal.toFixed(2) + "<br>");
+
+			if (subtotal >= 20.00)
+				discount = subtotal * 0.1;
+			else discount = 0;
+			document.write("Discount: $" + discount.toFixed(2) + "<br>");
+
+			tax = subtotal * 0.0625;
+			document.write("Tax: $" + tax.toFixed(2) + "<br>");
+
+			total = subtotal - discount + tax;
+			document.write("<br>" + "<strong>Total: $" + total.toFixed(2) + "</strong><br>");
+
+		</script>
+	</div>
+</body>
+</html>
